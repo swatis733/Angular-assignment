@@ -34,18 +34,16 @@ exports.newUser = (req, res) => {
 exports.getAttendance=(req,res)=>{
     var email=req.params.email;
     Attendance.find({email:email}).sort({date:1}).exec()
-    .then(date=>{
+    .then(dates=>{
         res.json({
             success: true,
-            body: date
+            body: dates
         })
     })  
     .catch(error=>{
         console.log("Error Message"+error);
     });  
 }
-
-
 
 exports.setAttendance = (req, res) => {
     var email = req.body.email;
